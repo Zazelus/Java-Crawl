@@ -1,21 +1,36 @@
 import java.util.Scanner;
 
+/**
+ * Runs the game and handles a lot of the program's overall functionality.
+ * As the project is updated, more tasks will be offloaded to other helper classes
+ * in order to streamline ProtoMain and the rest of the project.
+ *
+ * TODO: Move all functionality outside of main to other classes.
+ * TODO: Make a save/load game system inside of main.
+ *
+ * @author Zaezul
+ * @version 05.17.2021
+ *
+ */
 public class ProtoMain {
 
 	private static Scanner scan = new Scanner(System.in);
 
+	/**
+	 * Static variables used to deal with player movement.
+	 */
 	private static char[][] dungeonFloor;
 	public static char[][] playerMap;
 	private static int[] playerLocation = {2, 2};
 	private static int x = playerLocation[0];
 	private static int y = playerLocation[1];
 
-	public static String playerName;
+	/*public static String playerName;
 	public static int playerHp;
 	public static int playerDamage;
 	public static int playerGold = 0;
 	public static int playerPotions = 0;
-	// public static Object[] playerInventory;
+	public static Object[] playerInventory;*/
 
 	public static void main(String[] args) {
 		dungeonFloor = new char[][] {
@@ -44,6 +59,11 @@ public class ProtoMain {
 		movePlayer();
 	}
 
+	/**
+	 * Prints out a char array, which will usually be used for the game map.
+	 * This is mostly for the player's convenience.
+	 * @param map is a char array that represents a dungeon or particular area.
+	 */
 	public static void printMap(char[][] map) {
 		for (int i = 0; i < map.length; i++) {
             for (int j = 0; j < map[i].length; j++) {
@@ -53,23 +73,27 @@ public class ProtoMain {
         }
 	}
 
+	/**
+	 * Moves the player a tile up on the map unless they are on an edge.
+	 */
 	public static void moveNorth() {
-
 		if (playerLocation[0] > 0) {
 			playerLocation[0]--;
 			y--;
 
 			revealSurroundings();
 			printMap(playerMap);
-			parseRoom(playerLocation);
+			parseRoom();
 		}
 
 		else {
-			System.out.println("There is a wall ahead, you must choose a different path.");
-			movePlayer();
+			wallAhead();
 		}
 	}
 
+	/**
+	 * Moves the player a tile right on the map unless they are on an edge.
+	 */
 	public static void moveEast() {
 		if (playerLocation[1] < dungeonFloor.length) {
 			playerLocation[1]++;
@@ -77,20 +101,35 @@ public class ProtoMain {
 
 			revealSurroundings();
 			printMap(playerMap);
-			parseRoom(playerLocation);
+			parseRoom();
+		}
+
+		else {
+			wallAhead();
 		}
 	}
 
+	/**
+	 * Moves the player a tile down on the map unless they are on an edge.
+	 */
 	public static void moveSouth() {
-		if (playerLocation[0] < dungeonFloor[0].length)
+		if (playerLocation[0] < dungeonFloor[0].length) {
 			playerLocation[0]++;
 			y++;
 
 			revealSurroundings();
 			printMap(playerMap);
-			parseRoom(playerLocation);
+			parseRoom();
+		}
+
+		else {
+			wallAhead();
+		}
 	}
 
+	/**
+	 * Moves the player a tile left on the map unless they are on an edge.
+	 */
 	public static void moveWest() {
 		if (playerLocation[1] > 0) {
 			playerLocation[1]--;
@@ -98,10 +137,25 @@ public class ProtoMain {
 
 			revealSurroundings();
 			printMap(playerMap);
-			parseRoom(playerLocation);
+			parseRoom();
+		}
+
+		else {
+			wallAhead();
 		}
 	}
 
+	/**
+	 * Makes the player choose a different direction if they encounter a map edge.
+	 */
+	public static void wallAhead() {
+		System.out.println("There is a wall ahead, you must choose a different path.");
+		movePlayer();
+	}
+
+	/**
+	 * Control for player's direction.
+	 */
 	public static void movePlayer() {
 		System.out.println("1. North");
 		System.out.println("2. East");
@@ -128,6 +182,9 @@ public class ProtoMain {
 		}
 	}
 
+	/**
+	 * Reveals tiles/rooms immediately around the player as they move into a new spot.
+	 */
 	public static void revealSurroundings() {
 		// Update NW
 		if ((x > 0 && y > 0))
@@ -157,65 +214,44 @@ public class ProtoMain {
 		playerMap[y][x] = 'P';
 	}
 
-	private static void parseRoom(int[] playerLocation) {
+	/**
+	 * Calls the appropriate event based on what type of room the player has moved into.
+	 */
+	private static void parseRoom() {
 		switch (dungeonFloor[y][x]) {
 			case 'S':
-				enterStartRoom();
+				System.out.println("This is the entrance to the current floor. No reason to go back up now, you're in for the long haul.");
+				movePlayer();
 				break;
 			case 'E':
-				enterEmptyRoom();
+				// Create a new EmptyRoom object.
+				movePlayer();
 				break;
 			case '!':
-				enterTrapRoom();
+				// Create a new TrapRoom object.
+				movePlayer();
 				break;
 			case 'T':
-				enterTreasureRoom();
+				// Create a new TreasureRoom object.
+				movePlayer();
 				break;
 			case 'M':
-				enterMonsterRoom();
+				// Create a new MonsterRoom object.
+				movePlayer();
 				break;
 			case 'R':
-				enterRestRoom();
+				// Create a new RestRoom object.
+				movePlayer();
 				break;
 			case 'K':
-				enterKeyRoom();
+				// Create a new KeyRoom object.
+				movePlayer();
 				break;
 			case 'B':
-				enterBossRoom();
+				// Create a new BossRoom object.
+				movePlayer();
 				break;
 		}
-	}
-
-	public static void enterStartRoom() {
-
-	}
-
-	public static void enterEmptyRoom() {
-
-	}
-
-	public static void enterTrapRoom() {
-
-	}
-
-	public static void enterTreasureRoom() {
-
-	}
-
-	public static void enterMonsterRoom() {
-
-	}
-
-	public static void enterRestRoom() {
-
-	}
-
-	public static void enterKeyRoom() {
-
-	}
-
-	public static void enterBossRoom() {
-
 	}
 
 }
