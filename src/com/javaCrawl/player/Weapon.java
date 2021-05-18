@@ -1,5 +1,14 @@
 package com.javaCrawl.player;
 
+/**
+ * The weapon class.
+ *
+ * Will be made abstract or into an interface as different weapon 'types' will
+ * be needed.
+ *
+ * @author Zaezul
+ *
+ */
 public class Weapon {
 
     private String name;

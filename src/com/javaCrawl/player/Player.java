@@ -1,5 +1,11 @@
 package com.javaCrawl.player;
 
+/**
+ * Class representing the player. Used in combat etc.
+ *
+ * @author Zaezul
+ *
+ */
 public class Player {
 
     private String name;

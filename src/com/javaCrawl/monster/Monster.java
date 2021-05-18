@@ -1,5 +1,14 @@
 package com.javaCrawl.monster;
 
+/**
+ * Class representing various monsters that will be faced in combat.
+ *
+ * Will eventually be an interface or abstract class as there will be
+ * 'types' of monsters.
+ *
+ * @author Zaezul
+ *
+ */
 public class Monster {
 
 	private String name;

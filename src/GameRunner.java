@@ -255,6 +255,17 @@ public class GameRunner {
 				break;
 			case 'M':
 				MonsterRoom monster = new MonsterRoom(player);
+				/**
+				 * TODO: Implement something like an option menu before combat.
+				 * 		 i.e: flee, ambush, sneak, etc.
+				 *
+				 * 		 Rough Outline:
+				 *
+				 *       MonsterRoom monster = new MonsterRoom(player);
+				 *       monster.interact();
+				 *
+				 *       This way we get rid of the unused variable warning.
+				 */
 				movePlayer();
 				break;
 			case 'R':
