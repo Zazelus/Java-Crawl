@@ -12,7 +12,7 @@ import java.util.Scanner;
  * @version 05.17.2021
  *
  */
-public class ProtoMain {
+public class GameRunner {
 
 	private static Scanner scan = new Scanner(System.in);
 
