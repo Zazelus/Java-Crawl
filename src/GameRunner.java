@@ -1,5 +1,8 @@
 import java.util.Scanner;
 
+import com.javaCrawl.player.Player;
+import com.javaCrawl.rooms.MonsterRoom;
+
 /**
  * Runs the game and handles a lot of the program's overall functionality.
  * As the project is updated, more tasks will be offloaded to other helper classes
@@ -13,6 +16,8 @@ import java.util.Scanner;
  *
  */
 public class GameRunner {
+
+	private static Player player;
 
 	private static Scanner scan = new Scanner(System.in);
 
@@ -32,6 +37,9 @@ public class GameRunner {
 	public static int playerPotions = 0;
 	public static Object[] playerInventory;*/
 
+	public static int myHealth = 1000;
+	public static int myDamage = 5;
+
 	public static void main(String[] args) {
 		dungeonFloor = new char[][] {
 				{'T', 'E', 'M', 'M', 'E'},
@@ -49,6 +57,16 @@ public class GameRunner {
 				{'?', '?', '?', '?', '?'}
 		};
 
+        System.out.println("Your name!");
+        String myName = scan.nextLine();
+
+        player = new Player(myName, 1000, myDamage);
+
+        System.out.println("Your name: " + myName);
+        System.out.println("Your HP: " + myHealth);
+        System.out.println("Your attack power: " + myDamage);
+        System.out.println();
+        System.out.println();
 
 		System.out.println("You enter the dungeon...\n");
 		System.out.println("You are represented as P on the map below. \n");
@@ -236,7 +254,7 @@ public class GameRunner {
 				movePlayer();
 				break;
 			case 'M':
-				// Create a new MonsterRoom object.
+				MonsterRoom monster = new MonsterRoom(player);
 				movePlayer();
 				break;
 			case 'R':

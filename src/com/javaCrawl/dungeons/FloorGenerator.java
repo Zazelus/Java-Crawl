@@ -1,4 +1,4 @@
-package dungeons;
+package com.javaCrawl.dungeons;
 
 import java.io.File;
 import java.io.FileNotFoundException;

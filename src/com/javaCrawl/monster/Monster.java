@@ -1,8 +1,8 @@
-package com.javaCrawl.player;
+package com.javaCrawl.monster;
 
-public class Player {
+public class Monster {
 
-    private String name;
+	private String name;
 
     private int health;
     private int damage;
@@ -17,11 +17,11 @@ public class Player {
         this.dead = dead;
     }
 
-    public Player(boolean dead) {
+    public Monster(boolean dead) {
         this.dead = dead;
     }
 
-    public Player(String name, int health, int damage) {
+    public Monster(String name, int health, int damage) {
         this.name = name;
         this.health = health;
         this.damage = damage;
@@ -60,8 +60,6 @@ public class Player {
             this.health -= damageAmount;
 
             System.out.println("The remaining life of " + this.name + " is: " + this.health);
-
-            //System.out.println("Your remaining HP: "+ myHealth);
         }
     }
 
