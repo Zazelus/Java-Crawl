@@ -14,6 +14,7 @@ public class Player {
     private int damage;
 
     private boolean dead = false;
+    private boolean bossKey = false;
 
     public boolean isDead() {
         return dead;
@@ -21,6 +22,14 @@ public class Player {
 
     public void setDead(boolean dead) {
         this.dead = dead;
+    }
+
+    public boolean hasBossKey() {
+    	return bossKey;
+    }
+
+    public void gainsBossKey() {
+    	bossKey = true;
     }
 
     public Player(boolean dead) {

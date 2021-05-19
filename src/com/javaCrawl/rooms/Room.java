@@ -1,5 +1,7 @@
 package com.javaCrawl.rooms;
 
-public class Room {
+public interface Room {
+
+	public void interact();
 
 }

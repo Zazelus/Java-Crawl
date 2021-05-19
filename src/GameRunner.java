@@ -1,6 +1,9 @@
 import java.util.Scanner;
 
+import com.javaCrawl.art.FlavorText;
 import com.javaCrawl.player.Player;
+import com.javaCrawl.rooms.EmptyRoom;
+import com.javaCrawl.rooms.KeyRoom;
 import com.javaCrawl.rooms.MonsterRoom;
 
 /**
@@ -238,22 +241,58 @@ public class GameRunner {
 	private static void parseRoom() {
 		switch (dungeonFloor[y][x]) {
 			case 'S':
+				try {
+					FlavorText.printWithDelays("...", 1000);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+
 				System.out.println("This is the entrance to the current floor. No reason to go back up now, you're in for the long haul.");
+
+				try {
+					FlavorText.printWithDelays("...", 1000);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+
 				movePlayer();
 				break;
+
 			case 'E':
+				try {
+					FlavorText.printWithDelays("...", 1000);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+
 				// Create a new EmptyRoom object.
+				EmptyRoom emptyRoom = new EmptyRoom();
+				emptyRoom.interact();
+
 				movePlayer();
 				break;
+
 			case '!':
 				// Create a new TrapRoom object.
 				movePlayer();
 				break;
+
 			case 'T':
 				// Create a new TreasureRoom object.
 				movePlayer();
 				break;
+
 			case 'M':
+				try {
+					FlavorText.printWithDelays("...", 1000);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+
 				MonsterRoom monster = new MonsterRoom(player);
 				/**
 				 * TODO: Implement something like an option menu before combat.
@@ -266,16 +305,44 @@ public class GameRunner {
 				 *
 				 *       This way we get rid of the unused variable warning.
 				 */
+
+				try {
+					FlavorText.printWithDelays("...", 1000);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+
 				movePlayer();
 				break;
+
 			case 'R':
 				// Create a new RestRoom object.
 				movePlayer();
 				break;
+
 			case 'K':
+				try {
+					FlavorText.printWithDelays("...", 1000);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+
 				// Create a new KeyRoom object.
+				KeyRoom keyRoom = new KeyRoom(player);
+				keyRoom.interact();
+
+				try {
+					FlavorText.printWithDelays("...", 1000);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+
 				movePlayer();
 				break;
+
 			case 'B':
 				// Create a new BossRoom object.
 				movePlayer();

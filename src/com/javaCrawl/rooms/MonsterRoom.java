@@ -8,7 +8,7 @@ import com.javaCrawl.monster.Monster;
 import com.javaCrawl.player.Player;
 import com.javaCrawl.player.Weapon;
 
-public class MonsterRoom {
+public class MonsterRoom implements Room {
 
 	private static Player player;
 
@@ -47,9 +47,9 @@ public class MonsterRoom {
         int myDamage = player.getDamage();
         int myHealth = player.getHealth();
 
-        for (int i = 0; i < monsterList.size(); i++) {
+        /*for (int i = 0; i < monsterList.size(); i++) {
             System.out.println((i + 1) + ". character: " + monsterList.get(random()).getName());
-        }
+        }*/
 
         System.out.println("You were attacked by a(n):");
         System.out.println("Name: " + monsterList.get(whichCharacter).getName());
@@ -120,5 +120,10 @@ public class MonsterRoom {
         int szam = (int) (Math.random() * size);
         return szam;
     }
+
+	public void interact() {
+		// TODO Auto-generated method stub
+
+	}
 
 }
