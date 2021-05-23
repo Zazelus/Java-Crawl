@@ -3,7 +3,7 @@ package com.javaCrawl.rooms;
 import com.javaCrawl.art.FlavorText;
 import com.javaCrawl.player.Player;
 
-public class KeyRoom implements Room {
+public class KeyRoom extends Room {
 
 	public static Player player;
 
@@ -12,6 +12,8 @@ public class KeyRoom implements Room {
 	}
 
 	public void interact() {
+
+		printDelay();
 
 		System.out.println("You make your way into the next room. In front of you lays an ancient stone pedestal with a mysteriously engraved key,"
 				+ " beset with an eerie gem glowing red.");
@@ -27,6 +29,8 @@ public class KeyRoom implements Room {
 		System.out.println("\nItem Acquired: Skeleton Key");
 
 		player.gainsBossKey();
+
+		printDelay();
 
 	}
 

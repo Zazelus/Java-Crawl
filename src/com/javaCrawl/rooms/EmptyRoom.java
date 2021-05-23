@@ -2,7 +2,7 @@ package com.javaCrawl.rooms;
 
 import java.util.Random;
 
-public class EmptyRoom implements Room {
+public class EmptyRoom extends Room {
 
 	public static Random rand = new Random();
 
@@ -12,6 +12,8 @@ public class EmptyRoom implements Room {
 
 	public void interact() {
 		int random = rand.nextInt(5) + 1;
+
+		printDelay();
 
 		switch(random) {
 		case 1:
@@ -48,7 +50,11 @@ public class EmptyRoom implements Room {
 		case 10:
 			System.out.println();
 			break;*/
+
+
 		}
+
+		printDelay();
 
 	}
 

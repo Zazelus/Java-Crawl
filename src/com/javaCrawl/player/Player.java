@@ -10,11 +10,40 @@ public class Player {
 
     private String name;
 
+    private int maxHealth;
     private int health;
     private int damage;
+    private int floorLevel = 1;
 
     private boolean dead = false;
     private boolean bossKey = false;
+
+    public Player(boolean dead) {
+        this.dead = dead;
+    }
+
+    public Player(String name, int health, int damage) {
+        this.name = name;
+        this.health = health;
+        this.damage = damage;
+        this.maxHealth = health;
+    }
+
+    public int getMaxHealth() {
+    	return maxHealth;
+    }
+
+    public void setMaxHealth(int newHealth) {
+    	maxHealth = newHealth;
+    }
+
+    public void updateFloor() {
+    	floorLevel++;
+    }
+
+    public int getFloor() {
+    	return floorLevel;
+    }
 
     public boolean isDead() {
         return dead;
@@ -30,16 +59,6 @@ public class Player {
 
     public void gainsBossKey() {
     	bossKey = true;
-    }
-
-    public Player(boolean dead) {
-        this.dead = dead;
-    }
-
-    public Player(String name, int health, int damage) {
-        this.name = name;
-        this.health = health;
-        this.damage = damage;
     }
 
     public String getName() {

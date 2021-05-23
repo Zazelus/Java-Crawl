@@ -8,38 +8,40 @@ import com.javaCrawl.monster.Monster;
 import com.javaCrawl.player.Player;
 import com.javaCrawl.player.Weapon;
 
-public class MonsterRoom implements Room {
+public class MonsterRoom extends Room {
 
 	private static Player player;
+	//private static int floorLevel;
 
-	public static int size = 0;
-	public static Scanner sc = new Scanner(System.in);
+	private static int size = 0;
+	private static Scanner sc = new Scanner(System.in);
 
-    public static Monster zombie = new Monster("Zombie", 500, 10);
-    public static Monster wolf = new Monster("Wolf", 200, 30);
-    public static Monster dragon = new Monster("Dragon", 1000, 200);
-    public static Monster bigDragon = new Monster("Big Dragon", 2000, 400);
-    public static Monster vampire = new Monster("Vampire", 1000, 250);
+	private static Monster zombie = new Monster("Zombie", 500, 10);
+	private static Monster wolf = new Monster("Wolf", 200, 30);
+	private static Monster dragon = new Monster("Dragon", 1000, 200);
+	private static Monster bigDragon = new Monster("Big Dragon", 2000, 400);
+	private static Monster vampire = new Monster("Vampire", 1000, 250);
 
-    public static ArrayList<Monster> monsterList = new ArrayList<>();
+	private static ArrayList<Monster> monsterList = new ArrayList<>();
 
-    public static Weapon fist = new Weapon("Fist", 5);
-    public static Weapon sword = new Weapon("Sword", 50);
-    public static Weapon bow = new Weapon("Bow", 40);
-    public static Weapon crossBow = new Weapon("Crossbow", 35);
-    public static Weapon revolver = new Weapon("Revolver", 100);
+	private static Weapon fist = new Weapon("Fist", 5);
+	private static Weapon sword = new Weapon("Sword", 50);
+	private static Weapon bow = new Weapon("Bow", 40);
+	private static Weapon crossBow = new Weapon("Crossbow", 35);
+	private static Weapon revolver = new Weapon("Revolver", 100);
 
-    public static ArrayList<Weapon> weaponList = new ArrayList<>();
+	private static ArrayList<Weapon> weaponList = new ArrayList<>();
 
-	public MonsterRoom(Player player) {
+	public MonsterRoom(Player player, int floorLevel) {
 		MonsterRoom.player = player;
+		//MonsterRoom.floorLevel = floorLevel;
 
 		initializeMonsters();
 		initializeWeapons();
 		startCombat();
 	}
 
-	public static void startCombat() {
+	public void startCombat() {
 		size = monsterList.size();
 
         int whichCharacter = random();
@@ -50,6 +52,8 @@ public class MonsterRoom implements Room {
         /*for (int i = 0; i < monsterList.size(); i++) {
             System.out.println((i + 1) + ". character: " + monsterList.get(random()).getName());
         }*/
+
+        printDelay();
 
         System.out.println("You were attacked by a(n):");
         System.out.println("Name: " + monsterList.get(whichCharacter).getName());
@@ -94,6 +98,8 @@ public class MonsterRoom implements Room {
             }
 
         }
+
+        printDelay();
 	}
 
 	public static void initializeMonsters() {

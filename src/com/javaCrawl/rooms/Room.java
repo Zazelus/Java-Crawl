@@ -1,7 +1,17 @@
 package com.javaCrawl.rooms;
 
-public interface Room {
+import com.javaCrawl.art.FlavorText;
 
-	public void interact();
+public abstract class Room {
+
+	public abstract void interact();
+	public void printDelay() {
+		try {
+			FlavorText.printWithDelays("...", 1000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	};
 
 }
