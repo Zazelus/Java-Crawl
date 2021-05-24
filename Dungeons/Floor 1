@@ -1,18 +1,5 @@
-WALL,       WALL,       WALL,   WALL,       WALL,           WALL,       START,      WALL,       WALL,       WALL,       WALL,       WALL,       WALL
-WALL,       TREASURE,   WALL,   MONSTER,    TREASURE,       WALL,       EMPTY,      WALL,       EMPTY,      TREASURE,   EMPTY,      EMPTY,      TRAP
-WALL,       MONSTER,    WALL,   SECRET,     WALL,           WALL,       DIALOGUE,   WALL,       WALL,       MONSTER,    WALL,       EMPTY,      EMPTY
-TREASURE,   MONSTER,    EMPTY,  EMPTY,      TRAP,           EMPTY,      MONSTER,    EMPTY,      TRAP,       MONSTER,    TRAP,       MONSTER,    TREASURE
-WALL,       WALL,       WALL,   WALL,       WALL,           WALL,       DIALOGUE,   WALL,       WALL,       WALL,       WALL,       WALL,       WALL
-WALL,       WALL,       WALL,   WALL,       WALL,           WALL,       SHOP,       WALL,       WALL,       WALL,       WALL,       WALL,       WALL
-WALL,       WALL,       WALL,   WALL,       WALL,           EMPTY,      EMPTY,      EMPTY,      WALL,       WALL,       WALL,       WALL,       WALL
-WALL,       WALL,       WALL,   WALL,       WALL,           WALL,       TRAP,       WALL,       WALL,       WALL,       WALL,       WALL,       WALL
-HEAL,       MONSTER,    TRAP,   EMPTY,      EMPTY,          MONSTER,    MONSTER,    MONSTER,    TRAP,       TREASURE,   EMPTY,      EMPTY,      HEAL
-WALL,       WALL,       TRAP,   WALL,       EMPTY,          EMPTY,      DIALOGUE,   EMPTY,      MONSTER,    EMPTY,      WALL,       WALL,       WALL
-WALL,       MONSTER,    WALL,   WALL,       MONSTER,        WALL,       EMPTY,      WALL,       WALL,       TRAP,       WALL,       TREASURE,   WALL
-WALL,       TREASURE,   WALL,   WALL,       TREASURE,       WALL,       EMPTY,      MONSTER,    WALL,       TRAP,       MONSTER,    SECRET,     EMPTY
-WALL,       WALL,       WALL,   WALL,       WALL,           WALL,       TREASURE,   WALL,       WALL,       WALL,       WALL,       WALL,       WALL
-TREASURE,   TRAP,       TRAP,   MONSTER,    TRAP,           TRAP,       DIALOGUE,   TRAP,       MONSTER,    TRAP,       MONSTER,    TRAP,       KEY
-WALL,       WALL,       WALL,   WALL,       WALL,           WALL,       HEAL,       WALL,       WALL,       WALL,       WALL,       WALL,       WALL
-WALL,       WALL,       WALL,   WALL,       TREASURE,       SECRET,     BOSS,       WALL,       WALL,       WALL,       WALL,       WALL,       WALL
-
-
+T E M M E
+! M ! T M
+E R S E T
+R K E ! M
+M T B E T

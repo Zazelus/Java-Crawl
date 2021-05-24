@@ -1,6 +1,7 @@
 package com.javaCrawl.dungeons;
 
 import com.javaCrawl.player.Player;
+import com.javaCrawl.player.PlayerMovement;
 import com.javaCrawl.rooms.BossRoom;
 import com.javaCrawl.rooms.EmptyRoom;
 import com.javaCrawl.rooms.KeyRoom;
@@ -20,13 +21,10 @@ import com.javaCrawl.rooms.TreasureRoom;
  */
 public class FloorParser {
 
-	private static Player player;
-
-	private String[][] dungeonFloor;
 	private Room[][] parsedFloor;
 
-	private int height;
-	private int width;
+	private static int height;
+	private static int width;
 
 	/**
 	 * Creates a new FloorParser object.
@@ -34,14 +32,8 @@ public class FloorParser {
 	 * @param dungeonFloor	is the dungeon to be parsed for events.
 	 * @throws InterruptedException
 	 */
-	public FloorParser(Player player, String[][] dungeonFloor, int floorNumber) throws InterruptedException {
-		FloorParser.player = player;
-		this.dungeonFloor = dungeonFloor;
-
-		height = dungeonFloor.length;
-		width = dungeonFloor[0].length;
-
-		parsedFloor = parseFloorData(floorNumber);
+	public FloorParser(Player player, PlayerMovement movement, String[][] dungeonFloor, int floorNumber) throws InterruptedException {
+		parsedFloor = parseFloorData(player, movement, dungeonFloor, floorNumber);
 	}
 
 	/**
@@ -54,7 +46,10 @@ public class FloorParser {
 	 * @return the parsed array with events.
 	 * @throws InterruptedException
 	 */
-	public Room[][] parseFloorData(int floorNumber) throws InterruptedException {
+	public static Room[][] parseFloorData(Player player, PlayerMovement movement, String[][] dungeonFloor, int floorNumber) throws InterruptedException {
+		height = dungeonFloor.length;
+		width = dungeonFloor[0].length;
+
 		Room[][] populatedFloor = new Room[height][width];
 
 		for (int i = 0; i < height; i++) {
@@ -63,31 +58,31 @@ public class FloorParser {
 					case "S":
 						//populatedFloor[i][k] = new StartRoom();
 				    case "E":
-					    populatedFloor[i][k] = new EmptyRoom();
+					    populatedFloor[i][k] = new EmptyRoom(movement);
 					    break;
 				    case "M":
-					    populatedFloor[i][k] = new MonsterRoom(player, floorNumber);
+					    populatedFloor[i][k] = new MonsterRoom(player, movement, floorNumber);
 					    break;
 				    case "T":
-				    	populatedFloor[i][k] = new TreasureRoom(player, floorNumber);
+				    	populatedFloor[i][k] = new TreasureRoom(player, movement, floorNumber);
 				    	break;
 				    case "B":
-				    	populatedFloor[i][k] = new BossRoom(player, floorNumber);
+				    	populatedFloor[i][k] = new BossRoom(player, movement, floorNumber);
 				    	break;
 				    /*case "V":
 				    	populatedFloor[i][k] = new VendorRoom(floorNumber);
-				    	break;
-				    case "DIALOGUE":
-				    	populatedFloor[i][k] = new DialogueRoom(floorNumber);
 				    	break;*/
+				    case "D":
+				    	populatedFloor[i][k] = new EmptyRoom(movement);; // TO-DO : Placeholder for now.
+				    	break;
 				    case "K":
-				    	populatedFloor[i][k] = new KeyRoom(player);
+				    	populatedFloor[i][k] = new KeyRoom(player, movement);
 				    	break;
 				    case "R":
-				    	populatedFloor[i][k] = new RestRoom(player, floorNumber);
+				    	populatedFloor[i][k] = new RestRoom(player, movement, floorNumber);
 				    	break;
 				    case "!":
-				    	populatedFloor[i][k] = new TrapRoom(player, floorNumber);
+				    	populatedFloor[i][k] = new TrapRoom(player, movement, floorNumber);
 				}
 			}
 		}

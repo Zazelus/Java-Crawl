@@ -3,16 +3,19 @@ package com.javaCrawl.rooms;
 import java.util.Scanner;
 
 import com.javaCrawl.player.Player;
+import com.javaCrawl.player.PlayerMovement;
 
 public class RestRoom extends Room {
 
 	private Scanner scan = new Scanner(System.in);
 
 	private static Player player;
+	private static PlayerMovement movement;
 	//private static int floorNumber;
 
-	public RestRoom(Player player, int floorNumber) {
+	public RestRoom(Player player, PlayerMovement movement, int floorNumber) {
 		RestRoom.player = player;
+		RestRoom.movement = movement;
 		//RestRoom.floorNumber = floorNumber;
 	}
 
@@ -42,6 +45,13 @@ public class RestRoom extends Room {
 
 		printDelay();
 
+		movement.movePlayer();
+	}
+
+	@Override
+	public boolean explored() {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }

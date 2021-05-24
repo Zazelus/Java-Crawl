@@ -53,9 +53,9 @@ public class FloorGenerator {
 		while (file.hasNextLine()) {
 			String line = file.nextLine();
 
-			String[] lineSplit = line.split(", *");
+			String[] lineSplit = line.split(" *");
 
-			while (colIndex != width) {
+			while (colIndex < width) {
 				floorArray[rowIndex][colIndex] = lineSplit[colIndex];
 
 				colIndex++;

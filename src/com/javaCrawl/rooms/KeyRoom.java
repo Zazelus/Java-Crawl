@@ -2,13 +2,16 @@ package com.javaCrawl.rooms;
 
 import com.javaCrawl.art.FlavorText;
 import com.javaCrawl.player.Player;
+import com.javaCrawl.player.PlayerMovement;
 
 public class KeyRoom extends Room {
 
-	public static Player player;
+	private static Player player;
+	private static PlayerMovement movement;
 
-	public KeyRoom(Player player) {
+	public KeyRoom(Player player, PlayerMovement movement) {
 		KeyRoom.player = player;
+		KeyRoom.movement = movement;
 	}
 
 	public void interact() {
@@ -32,6 +35,13 @@ public class KeyRoom extends Room {
 
 		printDelay();
 
+		movement.movePlayer();
+	}
+
+	@Override
+	public boolean explored() {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }
