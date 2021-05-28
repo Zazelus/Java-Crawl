@@ -58,13 +58,13 @@ public class FloorParser {
 					case "S":
 						//populatedFloor[i][k] = new StartRoom();
 				    case "E":
-					    populatedFloor[i][k] = new EmptyRoom(movement);
+					    populatedFloor[i][k] = new EmptyRoom(player);
 					    break;
 				    case "M":
-					    populatedFloor[i][k] = new MonsterRoom(player, movement, floorNumber);
+					    populatedFloor[i][k] = new MonsterRoom(player, floorNumber);
 					    break;
 				    case "T":
-				    	populatedFloor[i][k] = new TreasureRoom(player, movement, floorNumber);
+				    	populatedFloor[i][k] = new TreasureRoom(player, floorNumber);
 				    	break;
 				    case "B":
 				    	populatedFloor[i][k] = new BossRoom(player, movement, floorNumber);
@@ -73,16 +73,16 @@ public class FloorParser {
 				    	populatedFloor[i][k] = new VendorRoom(floorNumber);
 				    	break;*/
 				    case "D":
-				    	populatedFloor[i][k] = new EmptyRoom(movement);; // TO-DO : Placeholder for now.
+				    	populatedFloor[i][k] = new EmptyRoom(player);; // TO-DO : Placeholder for now.
 				    	break;
 				    case "K":
-				    	populatedFloor[i][k] = new KeyRoom(player, movement);
+				    	populatedFloor[i][k] = new KeyRoom(player);
 				    	break;
 				    case "R":
-				    	populatedFloor[i][k] = new RestRoom(player, movement, floorNumber);
+				    	populatedFloor[i][k] = new RestRoom(player, floorNumber);
 				    	break;
 				    case "!":
-				    	populatedFloor[i][k] = new TrapRoom(player, movement, floorNumber);
+				    	populatedFloor[i][k] = new TrapRoom(player, floorNumber);
 				}
 			}
 		}

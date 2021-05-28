@@ -6,13 +6,11 @@ import java.util.Scanner;
 
 import com.javaCrawl.monster.Monster;
 import com.javaCrawl.player.Player;
-import com.javaCrawl.player.PlayerMovement;
 import com.javaCrawl.player.Weapon;
 
 public class MonsterRoom extends Room {
 
 	private static Player player;
-	private static PlayerMovement movement;
 	//private static int floorLevel;
 
 	private static int size = 0;
@@ -34,9 +32,8 @@ public class MonsterRoom extends Room {
 
 	private static ArrayList<Weapon> weaponList = new ArrayList<>();
 
-	public MonsterRoom(Player player, PlayerMovement movement, int floorLevel) {
+	public MonsterRoom(Player player, int floorLevel) {
 		MonsterRoom.player = player;
-		MonsterRoom.movement = movement;
 		//MonsterRoom.floorLevel = floorLevel;
 
 		initializeMonsters();
@@ -103,7 +100,7 @@ public class MonsterRoom extends Room {
 
         printDelay();
 
-        movement.movePlayer();
+        player.move();
 	}
 
 	public static void initializeMonsters() {

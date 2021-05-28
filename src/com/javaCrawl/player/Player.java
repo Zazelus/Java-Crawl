@@ -29,6 +29,10 @@ public class Player {
         this.maxHealth = health;
     }
 
+    public void move() {
+    	PlayerMovement.movePlayer();
+    }
+
     public int getMaxHealth() {
     	return maxHealth;
     }

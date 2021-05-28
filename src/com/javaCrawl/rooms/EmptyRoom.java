@@ -2,15 +2,15 @@ package com.javaCrawl.rooms;
 
 import java.util.Random;
 
-import com.javaCrawl.player.PlayerMovement;
+import com.javaCrawl.player.Player;
 
 public class EmptyRoom extends Room {
 
 	public static Random rand = new Random();
-	private static PlayerMovement movement;
+	private static Player player;
 
-	public EmptyRoom(PlayerMovement movement) {
-		EmptyRoom.movement = movement;
+	public EmptyRoom(Player player) {
+		EmptyRoom.player = player;
 	}
 
 	public void interact() {
@@ -59,7 +59,7 @@ public class EmptyRoom extends Room {
 
 		printDelay();
 
-		movement.movePlayer();
+		player.move();
 	}
 
 	@Override

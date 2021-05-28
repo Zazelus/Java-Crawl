@@ -56,7 +56,7 @@ public class PlayerMovement {
 	/**
 	 * Moves the player a tile up on the map unless they are on an edge.
 	 */
-	public void moveNorth() {
+	public static void moveNorth() {
 		if (y > 0) {
 			playerLocation[1]--;
 			y--;
@@ -74,7 +74,7 @@ public class PlayerMovement {
 	/**
 	 * Moves the player a tile right on the map unless they are on an edge.
 	 */
-	public void moveEast() {
+	public static void moveEast() {
 		if (x < widthIdx) {
 			playerLocation[0]++;
 			x++;
@@ -92,7 +92,7 @@ public class PlayerMovement {
 	/**
 	 * Moves the player a tile down on the map unless they are on an edge.
 	 */
-	public void moveSouth() {
+	public static void moveSouth() {
 		if (y < heightIdx) {
 			playerLocation[1]++;
 			y++;
@@ -110,7 +110,7 @@ public class PlayerMovement {
 	/**
 	 * Moves the player a tile left on the map unless they are on an edge.
 	 */
-	public void moveWest() {
+	public static void moveWest() {
 		if (x > 0) {
 			playerLocation[0]--;
 			x--;
@@ -128,7 +128,7 @@ public class PlayerMovement {
 	/**
 	 * Makes the player choose a different direction if they encounter a map edge.
 	 */
-	public void wallAhead() {
+	public static void wallAhead() {
 		System.out.println("There is a wall ahead, you must choose a different path.");
 		movePlayer();
 	}
@@ -136,7 +136,7 @@ public class PlayerMovement {
 	/**
 	 * Control for player's direction.
 	 */
-	public void movePlayer() {
+	public static void movePlayer() {
 		printMap(playerMap);
 
 		System.out.println("\nWhich direction will you go?\n");
@@ -201,7 +201,7 @@ public class PlayerMovement {
 	/**
 	 * Calls the appropriate event based on what type of room the player has moved into.
 	 */
-	private void parseRoom() {
+	private static void parseRoom() {
 		populatedFloor[y][x].interact();
 	}
 
