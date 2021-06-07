@@ -2,7 +2,6 @@ package com.javaCrawl.rooms;
 
 import com.javaCrawl.monster.Monster;
 import com.javaCrawl.player.Player;
-import com.javaCrawl.player.PlayerMovement;
 
 public class BossRoom extends Room {
 
@@ -12,7 +11,7 @@ public class BossRoom extends Room {
 
 	public static Monster goblinChief = new Monster("Goblin Chieftan", 500, 100);
 
-	public BossRoom(Player player, PlayerMovement movement, int floorNumber) {
+	public BossRoom(Player player, int floorNumber) {
 		//BossRoom.player = player;
 		//BossRoom.floorNumber = floorNumber;
 	}

@@ -1,7 +1,6 @@
 package com.javaCrawl.dungeons;
 
 import com.javaCrawl.player.Player;
-import com.javaCrawl.player.PlayerMovement;
 import com.javaCrawl.rooms.BossRoom;
 import com.javaCrawl.rooms.EmptyRoom;
 import com.javaCrawl.rooms.KeyRoom;
@@ -32,8 +31,8 @@ public class FloorParser {
 	 * @param dungeonFloor	is the dungeon to be parsed for events.
 	 * @throws InterruptedException
 	 */
-	public FloorParser(Player player, PlayerMovement movement, String[][] dungeonFloor, int floorNumber) throws InterruptedException {
-		parsedFloor = parseFloorData(player, movement, dungeonFloor, floorNumber);
+	public FloorParser(Player player, String[][] dungeonFloor, int floorNumber) throws InterruptedException {
+		parsedFloor = parseFloorData(player, dungeonFloor, floorNumber);
 	}
 
 	/**
@@ -46,7 +45,7 @@ public class FloorParser {
 	 * @return the parsed array with events.
 	 * @throws InterruptedException
 	 */
-	public static Room[][] parseFloorData(Player player, PlayerMovement movement, String[][] dungeonFloor, int floorNumber) throws InterruptedException {
+	public static Room[][] parseFloorData(Player player, String[][] dungeonFloor, int floorNumber) throws InterruptedException {
 		height = dungeonFloor.length;
 		width = dungeonFloor[0].length;
 
@@ -67,7 +66,7 @@ public class FloorParser {
 				    	populatedFloor[i][k] = new TreasureRoom(player, floorNumber);
 				    	break;
 				    case "B":
-				    	populatedFloor[i][k] = new BossRoom(player, movement, floorNumber);
+				    	populatedFloor[i][k] = new BossRoom(player, floorNumber);
 				    	break;
 				    /*case "V":
 				    	populatedFloor[i][k] = new VendorRoom(floorNumber);

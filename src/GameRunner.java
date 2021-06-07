@@ -3,7 +3,6 @@ import java.util.Scanner;
 
 import com.javaCrawl.dungeons.FloorGenerator;
 import com.javaCrawl.player.Player;
-import com.javaCrawl.player.PlayerMovement;
 
 /**
  * Runs the game and handles a lot of the program's overall functionality.
@@ -26,10 +25,8 @@ public class GameRunner {
 	/**
 	 * Static variables used to deal with player movement.
 	 */
-	private static PlayerMovement movement;
 	private static FloorGenerator floorGen;
 
-	//private static String[][] dungeonFloor;
 	public static String[][] playerMap;
 
 	/*public static String playerName;
@@ -74,8 +71,7 @@ public class GameRunner {
         System.out.println("Your name!");
         String myName = scan.nextLine();
 
-        player = new Player(myName, 1000, myDamage);
-		movement = new PlayerMovement(floorGen.getDungeon(), playerMap, player);
+        player = new Player(myName, 1000, myDamage, floorGen.getDungeon(), playerMap);
 
         System.out.println("Your name: " + myName);
         System.out.println("Your HP: " + myHealth);
@@ -86,7 +82,7 @@ public class GameRunner {
 		System.out.println("You enter the dungeon...\n");
 		System.out.println("You are represented as P on the map below. \n");
 
-		movement.movePlayer();
+		player.move();
 	}
 
 }
