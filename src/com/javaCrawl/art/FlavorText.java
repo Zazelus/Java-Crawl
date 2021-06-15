@@ -2,6 +2,13 @@ package com.javaCrawl.art;
 
 import java.util.concurrent.TimeUnit;
 
+/**
+ * This class is designed to be used statically. Will print certain
+ * text breaks/patterns as well as future ascii art for rooms, enemies and spells.
+ *
+ * @author Zaezul
+ *
+ */
 public class FlavorText {
 
 	/**

@@ -76,8 +76,8 @@ public class MonsterRoom extends Room {
                 default:
             }
 
-        	enemy.attack(enemy.getDamage(), player);
-            player.attack(monsterList.get(whichCharacter));
+        	enemy.attack(player);
+            player.attack(enemy);
             //characterList.get(whichCharacter).attack(characterList.get(whichCharacter).getDamage(), player.getHealth());
         }
 

@@ -5,11 +5,9 @@ import com.javaCrawl.dungeons.FloorGenerator;
 import com.javaCrawl.player.Player;
 
 /**
- * Runs the game and handles a lot of the program's overall functionality.
- * As the project is updated, more tasks will be offloaded to other helper classes
- * in order to streamline ProtoMain and the rest of the project.
+ * Runs the game, initializes the player and handles saving/loading
+ * and creating new games.
  *
- * TODO: Move all functionality outside of main to other classes.
  * TODO: Make a save/load game system inside of main.
  *
  * @author Zaezul
@@ -68,6 +66,13 @@ public class GameRunner {
 				{"?"}
 		};
 
+		/**
+		 * TODO: Add conditionals for a 'main menu'.
+		 */
+
+		/**
+		 * TODO: Make a more substantial player introduction/creation process.
+		 */
         System.out.println("Your name!");
         String myName = scan.nextLine();
 

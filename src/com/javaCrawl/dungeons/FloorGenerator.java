@@ -5,7 +5,8 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 /**
- * Generates levels using a file with comma separated values.
+ * Generates levels using a file with a legend corresponding to specific
+ * characters.
  *
  * @author Zaezul
  * @version 04.20.2020
@@ -50,9 +51,11 @@ public class FloorGenerator {
 		int rowIndex = 0;
 		int colIndex = 0;
 
+		/**
+		 * Will read each line and split every space or symbol in between characters.
+		 */
 		while (file.hasNextLine()) {
 			String line = file.nextLine();
-
 			String[] lineSplit = line.split(" *");
 
 			while (colIndex < width) {
@@ -62,12 +65,10 @@ public class FloorGenerator {
 			}
 
 			colIndex = 0;
-
 			rowIndex++;
 		}
 
 		file.close();
-
 		return floorArray;
 	}
 

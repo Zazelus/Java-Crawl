@@ -31,7 +31,7 @@ public class Player {
      * Player Inventory
      */
     private Item[] equippedItems;
-    private Item[] playerInventory;
+    //private Item[] playerInventory;
 
     // Using this weapon for testing.
     private static Weapon sword = new Weapon("Sword", null, 50, 0, 0, false);
@@ -62,10 +62,17 @@ public class Player {
     private boolean dead = false;
     private boolean bossKey = false;
 
-    public Player(boolean dead) {
+/*    public Player(boolean dead) {
         this.dead = dead;
-    }
+    }*/
 
+    /**
+     * Creates a new player without the need for a dungeon floor or map.
+     *
+     * @param name The player's name.
+     * @param health The player's health.
+     * @param damage The amount of damage the player deals.
+     */
     public Player(String name, int health, int damage) {
         this.name = name;
         this.health = health;
@@ -73,6 +80,15 @@ public class Player {
         this.maxHealth = health;
     }
 
+    /**
+     * Creates a new player.
+     *
+     * @param name The player's name.
+     * @param health The player's health.
+     * @param damage The amount of damage the player deals.
+     * @param dungeonFloor The current dungeon floor.
+     * @param playerMap The player's map of the dungeon floor.
+     */
     public Player(String name, int health, int damage, String[][] dungeonFloor, String[][] playerMap) {
         this.name = name;
         this.health = health;
@@ -81,7 +97,7 @@ public class Player {
 
         equippedItems = new Item[6];
         equippedItems[0] = sword;
-        playerInventory = new Item[30];
+        //playerInventory = new Item[30];
 
         Player.dungeonFloor = dungeonFloor;
         Player.playerMap = playerMap;
@@ -97,55 +113,119 @@ public class Player {
 		}
     }
 
+    /**
+     * Returns the player's name.
+     *
+     * @return name
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * Sets the player's name to a new one.
+     *
+     * @param name
+     */
     public void setName(String name) {
         this.name = name;
     }
 
+    /**
+     * Returns the player's current health.
+     *
+     * @return health
+     */
     public int getHealth() {
         return health;
     }
 
+    /**
+     * Sets the player's health to a new value.
+     *
+     * @param health is the new health of player.
+     */
     public void setHealth(int health) {
         this.health = health;
     }
 
+    /**
+     * Returns the player's damage value.
+     *
+     * @return damage
+     */
     public int getDamage() {
         return damage;
     }
 
+    /**
+     * Sets the player's damage to a new value.
+     *
+     * @param damage is the new damage of the player.
+     */
     public void setDamage(int damage) {
         this.damage = damage;
     }
 
-
+    /**
+     * Returns the player's maximum health.
+     *
+     * @return maxHealth
+     */
     public int getMaxHealth() {
     	return maxHealth;
     }
 
+    /**
+     * Sets the player's maximum health to a new value.
+     *
+     * @param newHealth is the new maximum health.
+     */
     public void setMaxHealth(int newHealth) {
     	maxHealth = newHealth;
     }
 
+    /**
+     * Checks to see if the player is dead.
+     *
+     * @return dead
+     */
     public boolean isDead() {
         return dead;
     }
 
+    /**
+     * Sets the player to a dead state.
+     *
+     * @param dead
+     */
     public void setDead(boolean dead) {
         this.dead = dead;
     }
 
+    /**
+     * Checks to see if the player has a key to the boss room.
+     * Used to traverse to the next floor.
+     *
+     * @return bossKey
+     */
     public boolean hasBossKey() {
     	return bossKey;
     }
 
+    /**
+     * If the player enters the key room and grabs the key, they
+     * will be able to access the boss room.
+     */
     public void gainsBossKey() {
     	bossKey = true;
     }
 
+    /**
+     * Calculates the player's attack roll against the enemy monster.
+     *
+     * @param monster is the monster to be attacked.
+     */
     public void attack(Monster monster) {
     	Weapon playerWeapon = (Weapon) equippedItems[0];
     	int damageAmount = playerWeapon.getWeaponDamage();
@@ -174,10 +254,18 @@ public class Player {
     	movePlayer();
     }
 
+    /**
+     * Goes up as the player descends the dungeon.
+     */
     public void updateFloor() {
     	floorLevel++;
     }
 
+    /**
+     * Returns the current floor the player is on.
+     *
+     * @return floorLevel
+     */
     public int getFloor() {
     	return floorLevel;
     }
