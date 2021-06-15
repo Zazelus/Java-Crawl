@@ -1,6 +1,6 @@
 package com.javaCrawl.items;
 
-public abstract class Item {
+public class Item {
 
 	String name;
 	String description;
@@ -9,9 +9,12 @@ public abstract class Item {
 	int value;
 
 	public Item(String name, String description, int quantity, int value) {
-	}
+		this.name = name;
+		this.description = description;
 
-	public abstract void use();
+		this.quantity = quantity;
+		this.value = value;
+	}
 
 	public String getName() {
 		return this.name;

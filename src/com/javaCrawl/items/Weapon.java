@@ -9,22 +9,14 @@ package com.javaCrawl.items;
  * @author Zaezul
  *
  */
-public class Weapon extends Item {
+public class Weapon extends Equipment {
 
-    private String name;
-    private String description;
-
-    private int quantity;
-    private int value;
     private int weaponDamage;
 
-    private boolean equipped;
-
     public Weapon(String name, String description, int quantity, int value, int weaponDamage, boolean equipped) {
-        super(name, description, quantity, value);
+        super(name, description, quantity, value, equipped);
 
         this.weaponDamage = weaponDamage;
-        this.equipped = equipped;
     }
 
     /*public void setName(String name) {
@@ -38,9 +30,5 @@ public class Weapon extends Item {
     public void setWeaponDamage(int weaponDamage) {
         this.weaponDamage = weaponDamage;
     }
-
-	public void use() {
-		equipped = true;
-	}
 
 }

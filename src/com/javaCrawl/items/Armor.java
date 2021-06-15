@@ -1,15 +1,17 @@
 package com.javaCrawl.items;
 
-public class Armor extends Item {
+public class Armor extends Equipment {
 
-	public Armor(String name, String description, int quantity, int value) {
-		super(name, description, quantity, value);
-		// TODO Auto-generated constructor stub
+	private int armorClass;
+
+	public Armor(String name, String description, int quantity, int value, boolean equipped, int armorClass) {
+		super(name, description, quantity, value, equipped);
+
+		this.armorClass = armorClass;
 	}
 
-	public void use() {
-		// TODO Auto-generated method stub
-
+	public int getArmorClass() {
+		return armorClass;
 	}
 
 }
