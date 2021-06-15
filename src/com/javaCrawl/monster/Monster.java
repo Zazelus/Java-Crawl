@@ -1,5 +1,7 @@
 package com.javaCrawl.monster;
 
+import com.javaCrawl.player.Player;
+
 /**
  * Class representing various monsters that will be faced in combat.
  *
@@ -60,15 +62,21 @@ public class Monster {
         this.damage = damage;
     }
 
-    public void attack(int damageAmount, int myHealth) {
-        if (damageAmount >= this.health || myHealth <= 0) {
-            System.out.println(this.name + " is dead!");
+    public void attack(int damageAmount, Player player) {
+    	int playerHealth = player.getHealth();
+    	String playerName = player.getName();
 
-            this.dead = true;
-        } else {
-            this.health -= damageAmount;
+        if (damageAmount >= playerHealth || playerHealth <= 0) {
+            System.out.println(playerName + " is dead!");
 
-            System.out.println("The remaining life of " + this.name + " is: " + this.health);
+            player.setDead(true);
+        }
+
+        else {
+            playerHealth -= damageAmount;
+            player.setHealth(playerHealth);
+
+            System.out.println("The remaining life of " + playerName + " is: " + playerHealth);
         }
     }
 

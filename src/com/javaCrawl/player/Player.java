@@ -1,11 +1,11 @@
 package com.javaCrawl.player;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 import com.javaCrawl.dungeons.FloorParser;
 import com.javaCrawl.items.Item;
+import com.javaCrawl.items.Weapon;
+import com.javaCrawl.monster.Monster;
 import com.javaCrawl.rooms.Room;
 
 /**
@@ -30,8 +30,11 @@ public class Player {
     /**
      * Player Inventory
      */
-    private List<Item> equippedItems =  new ArrayList<Item>();
-    private List<Item> playerInventory = new ArrayList<Item>();
+    private Item[] equippedItems;
+    private Item[] playerInventory;
+
+    // Using this weapon for testing.
+    private static Weapon sword = new Weapon("Sword", null, 50, 0, 0, false);
 
     /**
      * Player Prompt
@@ -76,6 +79,10 @@ public class Player {
         this.damage = damage;
         this.maxHealth = health;
 
+        equippedItems = new Item[6];
+        equippedItems[0] = sword;
+        playerInventory = new Item[30];
+
         Player.dungeonFloor = dungeonFloor;
         Player.playerMap = playerMap;
 
@@ -88,43 +95,6 @@ public class Player {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-    }
-
-
-    public void move() {
-    	movePlayer();
-    }
-
-    public int getMaxHealth() {
-    	return maxHealth;
-    }
-
-    public void setMaxHealth(int newHealth) {
-    	maxHealth = newHealth;
-    }
-
-    public void updateFloor() {
-    	floorLevel++;
-    }
-
-    public int getFloor() {
-    	return floorLevel;
-    }
-
-    public boolean isDead() {
-        return dead;
-    }
-
-    public void setDead(boolean dead) {
-        this.dead = dead;
-    }
-
-    public boolean hasBossKey() {
-    	return bossKey;
-    }
-
-    public void gainsBossKey() {
-    	bossKey = true;
     }
 
     public String getName() {
@@ -151,21 +121,66 @@ public class Player {
         this.damage = damage;
     }
 
-    public void attack(int damageAmount, int myHealth) {
-        if (damageAmount >= this.health || myHealth <= 0) {
-            System.out.println(this.name + " is dead!");
 
-            this.dead = true;
-        } else {
-            this.health -= damageAmount;
+    public int getMaxHealth() {
+    	return maxHealth;
+    }
 
-            System.out.println("The remaining life of " + this.name + " is: " + this.health);
+    public void setMaxHealth(int newHealth) {
+    	maxHealth = newHealth;
+    }
+
+    public boolean isDead() {
+        return dead;
+    }
+
+    public void setDead(boolean dead) {
+        this.dead = dead;
+    }
+
+    public boolean hasBossKey() {
+    	return bossKey;
+    }
+
+    public void gainsBossKey() {
+    	bossKey = true;
+    }
+
+    public void attack(Monster monster) {
+    	Weapon playerWeapon = (Weapon) equippedItems[0];
+    	int damageAmount = playerWeapon.getWeaponDamage();
+
+    	String monsterName = monster.getName();
+    	int monsterHealth = monster.getHealth();
+
+        if (damageAmount >= monsterHealth || monsterHealth <= 0) {
+            System.out.println(monsterName + " is dead!");
+
+            monster.setDead(true);
+        }
+        else {
+            monsterHealth -= damageAmount;
+            monster.setHealth(monsterHealth);
+
+            System.out.println("The remaining life of " + monsterName + " is: " + monsterHealth);
 
             //System.out.println("Your remaining HP: "+ myHealth);
         }
     }
 
     //Player Movement Control
+
+    public void move() {
+    	movePlayer();
+    }
+
+    public void updateFloor() {
+    	floorLevel++;
+    }
+
+    public int getFloor() {
+    	return floorLevel;
+    }
 
     /**
 	 * Prints out a char array, which will usually be used for the game map.

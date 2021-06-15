@@ -45,6 +45,12 @@ public class MonsterRoom extends Room {
 
         int whichCharacter = random();
 
+        Monster enemy = monsterList.get(whichCharacter);
+
+        String enemyName = enemy.getName();
+        int enemyHealth = enemy.getHealth();
+        int enemyPower = enemy.getDamage();
+
         int myDamage = player.getDamage();
         int myHealth = player.getHealth();
 
@@ -55,21 +61,23 @@ public class MonsterRoom extends Room {
         printDelay();
 
         System.out.println("You were attacked by a(n):");
-        System.out.println("Name: " + monsterList.get(whichCharacter).getName());
-        System.out.println("HP: " + monsterList.get(whichCharacter).getHealth());
-        System.out.println("Attack power: " + monsterList.get(whichCharacter).getDamage());
+        System.out.println("Name: " + enemyName);
+        System.out.println("HP: " + enemyHealth);
+        System.out.println("Attack power: " + enemyPower);
         System.out.println();
-        System.out.println("You attack with...");
-        System.out.println();
-        System.out.println("1. fist");
-        System.out.println("2. sword");
-        System.out.println("3. bow");
-        System.out.println("4. crossbow");
-        System.out.println("5. revolver");
 
-        int choice = sc.nextInt();
+        while (!enemy.isDead() && !player.isDead()) {
 
-        while (!monsterList.get(whichCharacter).isDead() && !player.isDead()) {
+        	System.out.println("You attack with...");
+            System.out.println();
+            System.out.println("1. fist");
+            System.out.println("2. sword");
+            System.out.println("3. bow");
+            System.out.println("4. crossbow");
+            System.out.println("5. revolver");
+
+        	int choice = sc.nextInt();
+
             switch (choice) {
                 case 1:
                     myDamage = 5;
@@ -90,12 +98,9 @@ public class MonsterRoom extends Room {
                     myDamage = 5;
             }
 
-            while (!monsterList.get(whichCharacter).isDead() && !player.isDead()) {
-            	monsterList.get(whichCharacter).attack(myDamage, myHealth);
-                player.attack(monsterList.get(whichCharacter).getDamage(), player.getHealth());
-                //characterList.get(whichCharacter).attack(characterList.get(whichCharacter).getDamage(), player.getHealth());
-            }
-
+        	enemy.attack(enemy.getDamage(), player);
+            player.attack(monsterList.get(whichCharacter));
+            //characterList.get(whichCharacter).attack(characterList.get(whichCharacter).getDamage(), player.getHealth());
         }
 
         printDelay();
