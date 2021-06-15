@@ -24,20 +24,11 @@ public class MonsterRoom extends Room {
 
 	private static ArrayList<Monster> monsterList = new ArrayList<>();
 
-	private static Weapon fist = new Weapon("Fist", null, 5, size, size, false);
-	private static Weapon sword = new Weapon("Sword", null, 50, size, size, false);
-	private static Weapon bow = new Weapon("Bow", null, 40, size, size, false);
-	private static Weapon crossBow = new Weapon("Crossbow", null, 35, size, size, false);
-	private static Weapon revolver = new Weapon("Revolver", null, 100, size, size, false);
-
-	private static ArrayList<Weapon> weaponList = new ArrayList<>();
-
 	public MonsterRoom(Player player, int floorLevel) {
 		MonsterRoom.player = player;
 		//MonsterRoom.floorLevel = floorLevel;
 
 		initializeMonsters();
-		initializeWeapons();
 	}
 
 	public void startCombat() {
@@ -50,13 +41,6 @@ public class MonsterRoom extends Room {
         String enemyName = enemy.getName();
         int enemyHealth = enemy.getHealth();
         int enemyPower = enemy.getDamage();
-
-        int myDamage = player.getDamage();
-        int myHealth = player.getHealth();
-
-        /*for (int i = 0; i < monsterList.size(); i++) {
-            System.out.println((i + 1) + ". character: " + monsterList.get(random()).getName());
-        }*/
 
         printDelay();
 
@@ -80,22 +64,16 @@ public class MonsterRoom extends Room {
 
             switch (choice) {
                 case 1:
-                    myDamage = 5;
                     break;
                 case 2:
-                    myDamage = sword.getWeaponDamage();
                     break;
                 case 3:
-                    myDamage = bow.getWeaponDamage();
                     break;
                 case 4:
-                    myDamage = crossBow.getWeaponDamage();
                     break;
                 case 5:
-                    myDamage = revolver.getWeaponDamage();
                     break;
                 default:
-                    myDamage = 5;
             }
 
         	enemy.attack(enemy.getDamage(), player);
@@ -118,16 +96,6 @@ public class MonsterRoom extends Room {
 	    ));
 	}
 
-	public static void initializeWeapons() {
-	    weaponList.addAll(Arrays.asList(
-	            fist,
-	            sword,
-	            bow,
-	            crossBow,
-	            revolver
-	    ));
-	}
-
 	public static int random() {
         int szam = (int) (Math.random() * size);
         return szam;
@@ -137,7 +105,6 @@ public class MonsterRoom extends Room {
 		startCombat();
 	}
 
-	@Override
 	public boolean explored() {
 		// TODO Auto-generated method stub
 		return false;
