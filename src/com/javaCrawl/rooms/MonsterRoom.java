@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
+import com.javaCrawl.items.Weapon;
 import com.javaCrawl.monster.Monster;
 import com.javaCrawl.player.Player;
-import com.javaCrawl.player.Weapon;
 
 public class MonsterRoom extends Room {
 
@@ -24,11 +24,11 @@ public class MonsterRoom extends Room {
 
 	private static ArrayList<Monster> monsterList = new ArrayList<>();
 
-	private static Weapon fist = new Weapon("Fist", 5);
-	private static Weapon sword = new Weapon("Sword", 50);
-	private static Weapon bow = new Weapon("Bow", 40);
-	private static Weapon crossBow = new Weapon("Crossbow", 35);
-	private static Weapon revolver = new Weapon("Revolver", 100);
+	private static Weapon fist = new Weapon("Fist", null, 5, size, size, false);
+	private static Weapon sword = new Weapon("Sword", null, 50, size, size, false);
+	private static Weapon bow = new Weapon("Bow", null, 40, size, size, false);
+	private static Weapon crossBow = new Weapon("Crossbow", null, 35, size, size, false);
+	private static Weapon revolver = new Weapon("Revolver", null, 100, size, size, false);
 
 	private static ArrayList<Weapon> weaponList = new ArrayList<>();
 

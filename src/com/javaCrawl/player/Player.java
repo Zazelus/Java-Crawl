@@ -1,8 +1,11 @@
 package com.javaCrawl.player;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 import com.javaCrawl.dungeons.FloorParser;
+import com.javaCrawl.items.Item;
 import com.javaCrawl.rooms.Room;
 
 /**
@@ -13,21 +16,31 @@ import com.javaCrawl.rooms.Room;
  */
 public class Player {
 
+
+	/**
+	 * Player Attributes
+	 */
     private String name;
 
-
-    // Player Attributes
     private int maxHealth;
     private int health;
     private int damage;
     private int floorLevel = 1;
 
-    // Player Movement
+    /**
+     * Player Inventory
+     */
+    private List<Item> equippedItems =  new ArrayList<Item>();
+    private List<Item> playerInventory = new ArrayList<Item>();
+
+    /**
+     * Player Prompt
+     */
     private static Scanner scan = new Scanner(System.in);
 
-	/**
-	 * Static variables used to deal with player movement.
-	 */
+    /**
+     * Player Movement
+     */
 	private static String[][] dungeonFloor;
 	public static String[][] playerMap;
 
@@ -40,6 +53,9 @@ public class Player {
 
 	private static Room[][] populatedFloor;
 
+	/**
+	 * Booleans to track player states.
+	 */
     private boolean dead = false;
     private boolean bossKey = false;
 
