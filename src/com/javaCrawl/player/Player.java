@@ -31,7 +31,9 @@ public class Player {
      * Player Inventory
      */
     private Item[] equippedItems;
-    //private Item[] playerInventory;
+    private Item[] playerInventory;
+
+    private int freeInvSlot = 0;
 
     // Using this weapon for testing.
     private static Weapon sword = new Weapon("Sword", null, 50, 0, 0, false);
@@ -97,7 +99,7 @@ public class Player {
 
         equippedItems = new Item[6];
         equippedItems[0] = sword;
-        //playerInventory = new Item[30];
+        playerInventory = new Item[30];
 
         Player.dungeonFloor = dungeonFloor;
         Player.playerMap = playerMap;
@@ -183,6 +185,40 @@ public class Player {
      */
     public void setMaxHealth(int newHealth) {
     	maxHealth = newHealth;
+    }
+
+    /**
+     * Returns the items that player has equipped.
+     *
+     * @return equippedItems
+     */
+    public Item[] getPlayerEquipment() {
+    	return equippedItems;
+    }
+
+    /**
+     * Returns the items in player inventory.
+     *
+     * @return playerInventory
+     */
+    public Item[] getPlayerInventory() {
+    	return playerInventory;
+    }
+
+    /**
+     * Picks up the current argument as an item and puts it into
+     * the player's inventory.
+     *
+     * @param item is the item to be picked up.
+     */
+    public void pickUpItem(Item item) {
+    	if (freeInvSlot < playerInventory.length) {
+    		playerInventory[freeInvSlot] = item;
+    	}
+
+    	else {
+    		System.out.println("\nPlayer inventory is full!");
+    	}
     }
 
     /**
