@@ -22,9 +22,22 @@ public class Player {
 	 */
     private String name;
 
-    private int maxHealth;
-    private int health;
-    private int damage;
+    /**
+	 * Player stat variables, certain statistics are important for specific classes.
+	 */
+	private int str;
+	private int dex;
+	private int con;
+	private int intl;
+	private int wis;
+	private int hitPoints;
+	private int maxHitPoints;
+
+	//public static PlayerClass playerClass = null;
+
+	public static int statPoints = 25;
+	public static int playerExp;
+
     private int floorLevel = 1;
 
     /**
@@ -75,11 +88,10 @@ public class Player {
      * @param health The player's health.
      * @param damage The amount of damage the player deals.
      */
-    public Player(String name, int health, int damage) {
+    public Player(String name, int health) {
         this.name = name;
-        this.health = health;
-        this.damage = damage;
-        this.maxHealth = health;
+        this.hitPoints = health;
+        this.maxHitPoints = health;
     }
 
     /**
@@ -91,11 +103,15 @@ public class Player {
      * @param dungeonFloor The current dungeon floor.
      * @param playerMap The player's map of the dungeon floor.
      */
-    public Player(String name, int health, int damage, String[][] dungeonFloor, String[][] playerMap) {
+    public Player(String name, int health, int str, int dex, int con, int intl, int wis, String[][] dungeonFloor, String[][] playerMap) {
         this.name = name;
-        this.health = health;
-        this.damage = damage;
-        this.maxHealth = health;
+        this.hitPoints = health;
+        this.maxHitPoints = health;
+        this.str = str;
+        this.dex = dex;
+        this.con = con;
+        this.intl = intl;
+        this.wis = wis;
 
         equippedItems = new Item[6];
         equippedItems[0] = sword;
@@ -139,7 +155,7 @@ public class Player {
      * @return health
      */
     public int getHealth() {
-        return health;
+        return hitPoints;
     }
 
     /**
@@ -148,26 +164,26 @@ public class Player {
      * @param health is the new health of player.
      */
     public void setHealth(int health) {
-        this.health = health;
+        this.hitPoints = health;
     }
 
-    /**
+/*    *//**
      * Returns the player's damage value.
      *
      * @return damage
-     */
+     *//*
     public int getDamage() {
         return damage;
     }
 
-    /**
+    *//**
      * Sets the player's damage to a new value.
      *
      * @param damage is the new damage of the player.
-     */
+     *//*
     public void setDamage(int damage) {
         this.damage = damage;
-    }
+    }*/
 
     /**
      * Returns the player's maximum health.
@@ -175,7 +191,7 @@ public class Player {
      * @return maxHealth
      */
     public int getMaxHealth() {
-    	return maxHealth;
+    	return maxHitPoints;
     }
 
     /**
@@ -184,8 +200,119 @@ public class Player {
      * @param newHealth is the new maximum health.
      */
     public void setMaxHealth(int newHealth) {
-    	maxHealth = newHealth;
+    	maxHitPoints = newHealth;
     }
+
+    /**
+	 * Returns the player's current strength score.
+	 *
+	 * @return player's strength score.
+	 */
+	public int getStrength() {
+		return str;
+	}
+
+	/**
+	 * Modifies the strength score by a specific number.
+	 *
+	 * @param mod is how much the score will be modified by.
+	 */
+	public void modifyStrength(int mod) {
+		str += mod;
+	}
+
+	/**
+	 * Returns the player's current dexterity score.
+	 *
+	 * @return player's dexterity score.
+	 */
+	public int getDexterity() {
+		return dex;
+	}
+
+	/**
+	 * Modifies the dexterity score by a specific number.
+	 *
+	 * @param mod is how much the score will be modified by.
+	 */
+	public void modifyDexterity(int mod) {
+		dex += mod;
+	}
+
+	/**
+	 * Returns the player's current constitution score.
+	 *
+	 * @return player's constitution score.
+	 */
+	public int getConstitution() {
+		return con;
+	}
+
+	/**
+	 * Modifies the constitution score by a specific number.
+	 *
+	 * @param mod is how much the score will be modified by.
+	 */
+	public void modifyConstitution(int mod) {
+		con += mod;
+	}
+
+	/**
+	 * Returns the player's current intelligence score.
+	 *
+	 * @return player's intelligence score.
+	 */
+	public int getIntelligence() {
+		return intl;
+	}
+
+	/**
+	 * Modifies the intelligence score by a specific number.
+	 *
+	 * @param mod is how much the score will be modified by.
+	 */
+	public void modifyIntelligence(int mod) {
+		intl += mod;
+	}
+
+	/**
+	 * Returns the player's current wisdom score.
+	 *
+	 * @return player's wisdom score.
+	 */
+	public int getWisdom() {
+		return wis;
+	}
+
+	/**
+	 * Modifies the wisdom score by a specific number.
+	 *
+	 * @param mod is how much the score will be modified by.
+	 */
+	public void modifyWisdom(int mod) {
+		wis += mod;
+	}
+
+	/**
+	 * Resets player skills to standard array.
+	 */
+	public void skillReset() {
+		str = 10;
+		dex = 10;
+		con = 10;
+		wis = 10;
+		intl = 10;
+	}
+
+	/**
+	 * Gives the modifier for the current ability score.
+	 *
+	 * @param abilityScore is the ability score to calculate the modifier for.
+	 * @return the modifier for the ability score.
+	 */
+	public static int abilityModifer(int abilityScore) {
+		return (int) Math.floor((float) (abilityScore - 10) / 2);
+	}
 
     /**
      * Returns the items that player has equipped.
