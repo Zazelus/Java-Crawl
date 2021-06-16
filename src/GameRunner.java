@@ -34,9 +34,6 @@ public class GameRunner {
 	public static int playerPotions = 0;
 	public static Object[] playerInventory;*/
 
-	public static int myHealth = 1000;
-	public static int myDamage = 5;
-
 	public static void main(String[] args) {
 
 		/*dungeonFloor = new String[][] {
@@ -76,11 +73,11 @@ public class GameRunner {
         System.out.println("Your name!");
         String myName = scan.nextLine();
 
-        player = new Player(myName, 1000, myDamage, floorGen.getDungeon(), playerMap);
+        player = new Player(myName, 1000, 10, 10, 10, 10, 10, floorGen.getDungeon(), playerMap);
 
         System.out.println("Your name: " + myName);
-        System.out.println("Your HP: " + myHealth);
-        System.out.println("Your attack power: " + myDamage);
+        System.out.println("Your HP: " + 10);
+        System.out.println("Your attack power: " + 10);
         System.out.println();
         System.out.println();
 
